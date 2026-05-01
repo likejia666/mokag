@@ -3,8 +3,8 @@
 
 索引
 ================================================================================
-6.12 人才库相关接口【新增】【P0】
-6.13 其他补充接口【新增】
+6.12 人才库相关接口
+6.13 其他补充接口
 
 【6.11.6 企业认证详情】
 GET /api/admin/company-certifications/{id}/detail
@@ -1198,7 +1198,7 @@ GET /api/admin/sub-admin/detail
 
 说明：
 - `role_name` 为展示用角色标签或权限模板名称（如"审核专员""客服""运营"），不等同于 admin_users.role 的枚举值
-- `admin_user_permissions` 字段为聚合结果，来自 admin_user_permissions 表；超级管理员权限不依赖该字段判断【更新】【P1】
+- `admin_user_permissions` 字段为聚合结果，来自 admin_user_permissions 表；超级管理员权限不依赖该字段判断
 
 【6.11.22.2 新增子管理员】
 POST /api/admin/sub-admin/add
@@ -1215,7 +1215,7 @@ POST /api/admin/sub-admin/add
 
 说明：
 - `permissions` 请求参数为 permission_code 数组，后端将逐条写入 admin_user_permissions 表
-- 帮助中心相关可选值包括：help:category:manage、help:article:manage、help:relation:manage、help:synonym:manage、help:stats:view【更新】【P1】
+- 帮助中心相关可选值包括：help:category:manage、help:article:manage、help:relation:manage、help:synonym:manage、help:stats:view
 
 成功响应：
 {
@@ -1631,7 +1631,7 @@ POST /api/admin/job/toggle-top
 - `action=set` 时 `top_days` 必填且必须大于 0；`action=cancel` 时忽略 `top_days`
 - 必须写入 `operation_logs`，记录 `operator_id`、`target_id=job_id`、`target_type=job`、`request_id`、`result`、`risk_level`、`reason`、`before_snapshot`、`after_snapshot`；其中快照至少包含职位当前置顶状态、置顶剩余时长摘要与本次操作结果
 - 成功、失败、拒绝三类结果都必须留痕；如命中权限不足、数据范围限制、参数不合法或二次确认未通过，必须返回 403 或 422，并写入失败/拒绝审计日志
-- 【新增】管理员设置置顶前，系统会自动检查该职位是否有待审核的置顶申请（job_top_applications 中 status=pending 的记录）：
+- 管理员设置置顶前，系统会自动检查该职位是否有待审核的置顶申请（job_top_applications 中 status=pending 的记录）：
   ├─ 若有待审核的申请 → 返回提示，引导管理员先去审核用户申请
   │   错误响应示例：
   │   {
@@ -1898,7 +1898,7 @@ DELETE /api/admin/broadcast/delete
   "msg": "success"
 }
 
-【6.11.29 帮助中心管理接口】【新增】【P1】
+【6.11.29 帮助中心管理接口】
 说明：帮助中心管理统一由管理员端维护分类、文章、相关文章、同义词与搜索统计；后台入口统一为"帮助中心管理"。
 权限要求：分类管理使用 help:category:manage，文章管理使用 help:article:manage，相关文章配置使用 help:relation:manage，同义词管理使用 help:synonym:manage，搜索统计查看使用 help:stats:view。
 
@@ -2071,7 +2071,7 @@ GET /api/admin/help/search-stats
 - type: 统计类型（hot/no_result/trend，可选）
 
 ================================================================================
-6.12 人才库相关接口【新增】【P0】
+6.12 人才库相关接口
 ================================================================================
 
 【6.12.1 人才库列表】
@@ -2131,7 +2131,7 @@ GET /api/employer/talent-pool
 
 说明：
 - 人才库列表与搜索统一复用 `GET /api/employer/talent-pool`，不再单独保留 `/api/employer/talent-pool/search`
-- 同一求职者可能以不同工种存在于人才库中，分别展示为独立记录【新增】
+- 同一求职者可能以不同工种存在于人才库中，分别展示为独立记录
 - `category_name` 来自 `talent_pool.category_name` 快照字段，不再关联查询【修订】
 - `level` 与 `level_name` 来自加入人才库时固化的 `talent_pool.level` 快照
 - 列表默认按 `created_at DESC` 排序
@@ -2151,7 +2151,7 @@ Laravel 实现说明：
 - 服务端根据 `source_application_id` 反查报名记录，自动写入 `seeker_id`、`source_job_id`、`category_id`、`category_name`、`level`【修订】
 - 仅允许将当前雇主自己发布职位下的报名记录加入人才库
 - 同一雇主对同一求职者的同一工种仅保留一条人才库记录【修订】
-- 若同一求职者以不同工种报名，可分别加入人才库（不影响已有工种记录）【新增】
+- 若同一求职者以不同工种报名，可分别加入人才库（不影响已有工种记录）
 
 成功响应：
 {
@@ -2201,7 +2201,7 @@ GET /api/employer/talent-pool/resume
 成功响应：（同简历详情，包含完整工作经历和技能）
 
 ================================================================================
-6.13 其他补充接口【新增】
+6.13 其他补充接口
 ================================================================================
 
 【6.13.1 删除单条通知】
@@ -2371,7 +2371,7 @@ PUT /api/job/mark-filled
 │   │   ├─ close_reason = filled（已招满关闭）
 │   │   └─ 取消后至少一个启用中的工种/级别未满员
 │   ├─ 满足条件 → 自动恢复为 active，close_reason 置回 null
-│   └─ 不满足条件（close_reason = manual / admin）→ 不恢复，保持关闭状态【新增】【P0】
+│   └─ 不满足条件（close_reason = manual / admin）→ 不恢复，保持关闭状态
 
 【6.13.7 获取相关职位推荐】
 GET /api/job/related

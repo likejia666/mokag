@@ -8,8 +8,8 @@
 7.3 工种图标
 7.4 状态图标
 7.5 其他图标
-7.6 空状态插画SVG提示词【新增】【P2】
-7.7 品牌LOGO设计说明【新增】
+7.6 空状态插画SVG提示词
+7.7 品牌LOGO设计说明
 
 以下是系统所需SVG图标的AI生成提示词，建议使用MidJourney、DALL-E或Stable Diffusion生成：
 
@@ -73,69 +73,69 @@ A minimalist flag icon in neumorphism style, soft red gradient, rounded corners,
 【认证勾选图标】
 A minimalist checkmark shield icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【住宿图标】【新增】
+【住宿图标】
 A minimalist house with bed icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【学历图标】【新增】
+【学历图标】
 A minimalist graduation cap icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【年龄图标】【新增】
+【年龄图标】
 A minimalist person with age number icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【联系人图标】【新增】
+【联系人图标】
 A minimalist person card icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【电话图标】【新增】
+【电话图标】
 A minimalist telephone handset icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【点赞图标】【新增】
+【点赞图标】
 A minimalist thumbs up icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【简历图标】【新增】
+【简历图标】
 A minimalist document with person icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【统计/图表图标】【新增】
+【统计/图表图标】
 A minimalist bar chart statistics icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【置顶申请图标】【新增】
+【置顶申请图标】
 A minimalist crown with upward arrow icon in neumorphism style, soft gold gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【复制图标】【新增】
+【复制图标】
 A minimalist two overlapping pages copy icon in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【黑名单图标】【新增】
+【黑名单图标】
 A minimalist prohibited circle with person icon in neumorphism style, soft red gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【包吃图标】【新增】【P2】
+【包吃图标】
 A minimalist bowl and chopsticks icon representing meals provided, in neumorphism style, soft orange gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【工期图标】【新增】【P2】
+【工期图标】
 A minimalist hourglass with calendar icon representing work duration, in neumorphism style, soft purple gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【结算方式图标】【新增】【P2】
+【结算方式图标】
 A minimalist money bag with calendar icon representing payment settlement, in neumorphism style, soft green gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【草稿保存成功图标】【新增】【P2】
+【草稿保存成功图标】
 A minimalist pencil with checkmark icon representing draft saved, in neumorphism style, soft green gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【心跳/在线状态图标】【新增】【P2】
+【心跳/在线状态图标】
 A minimalist pulse heart icon representing online status, in neumorphism style, soft green gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【在线人数图标】【新增】【P2】
+【在线人数图标】
 A minimalist group of people with signal icon representing online users count, in neumorphism style, soft blue gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【图片上传失败图标】【新增】【P2】
+【图片上传失败图标】
 A minimalist image with error cross icon representing upload failed, in neumorphism style, soft red gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【置顶到期警告图标】【新增】【P2】
+【置顶到期警告图标】
 A minimalist crown with clock warning icon representing top expiring soon, in neumorphism style, soft orange gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【密码强度指示器图标组】【新增】【P3】
+【密码强度指示器图标组】【P3】
 Weak password: A minimalist shield with one bar icon in neumorphism style, soft red gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 Medium password: A minimalist shield with two bars icon in neumorphism style, soft orange gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 Strong password: A minimalist shield with three bars icon in neumorphism style, soft green gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【眼睛图标（显示/隐藏密码）】【新增】【P3】
+【眼睛图标（显示/隐藏密码）】【P3】
 Show password: A minimalist open eye icon in neumorphism style, soft gray gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 Hide password: A minimalist eye with slash icon in neumorphism style, soft gray gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
@@ -181,7 +181,7 @@ A minimalist X cross circle icon in neumorphism style, soft red gradient, rounde
 【置顶图标】
 A minimalist pin icon in neumorphism style, soft gold gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-【草稿图标】【新增】
+【草稿图标】
 A minimalist pencil on paper icon in neumorphism style, soft gray gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
 7.5 其他图标
@@ -220,7 +220,7 @@ A minimalist left arrow icon in neumorphism style, soft blue gradient, rounded c
 【更多图标（三点）】
 A minimalist three dots menu icon in neumorphism style, soft gray gradient, rounded corners, 3D shadow effect, vector art, simple and clean design, white background, 512x512px
 
-7.6 空状态插画SVG提示词【新增】【P2】
+7.6 空状态插画SVG提示词
 --------------------------------------------------
 【无职位空状态】
 A cute flat illustration of an empty box with a magnifying glass, representing no jobs found, soft blue and gray colors, minimalist style, clean background, suitable for mobile app empty state, vector art, 512x512px
@@ -249,7 +249,7 @@ A cute flat illustration of a lost person looking at a map with a 404 sign, repr
 【操作成功状态】
 A cute flat illustration of a checkmark trophy with confetti, representing success, soft green and gold colors, minimalist style, clean background, suitable for mobile app success state, vector art, 512x512px
 
-7.7 品牌LOGO设计说明【新增】
+7.7 品牌LOGO设计说明
 --------------------------------------------------
 品牌LOGO设计要求：
 - 风格：科技感、专业、可信赖

@@ -6,14 +6,14 @@
 6.1 接口通用规范
 6.2 错误代码规范
 6.3 用户相关接口
-6.4 企业认证相关接口【新增】
+6.4 企业认证相关接口
 6.5 简历相关接口
 6.6 职位相关接口
-6.7 评论相关接口【新增】
+6.7 评论相关接口
 6.8 报名相关接口
 6.9 消息相关接口
 6.10 其他功能接口
-6.11 管理员后台接口【新增】
+6.11 管理员后台接口
 
 6.1 接口通用规范
 --------------------------------------------------
@@ -36,7 +36,7 @@
   "data": {}
 }
 
-【HTTP状态码与业务code约定】【新增】【P0】
+【HTTP状态码与业务code约定】
 - HTTP 状态码用于表达协议/传输语义；响应体中的业务 `code` 用于表达具体业务结果，两者需同时使用，不互相替代
 - 成功响应：HTTP 200，业务 `code` = 200，`msg` = success
 - 参数错误：HTTP 400，对应业务 `code` 使用 2000-2999 区间
@@ -171,7 +171,7 @@ class JobController extends Controller
 6.2 错误代码规范
 --------------------------------------------------
 
-【错误响应映射规则】【新增】【P0】
+【错误响应映射规则】
 - 1000-1999：系统级错误，默认对应 HTTP 500
 - 2000-2999：参数错误，默认对应 HTTP 400
 - 3000-3999：认证与权限错误，其中未登录/登录失效默认对应 HTTP 401，无权限默认对应 HTTP 403
@@ -182,7 +182,7 @@ class JobController extends Controller
 - 8000-8999：管理员权限错误，默认对应 HTTP 403
 - 9000-9999：WebSocket 错误，仅用于 WebSocket 通道的事件响应或握手失败反馈；若通过 HTTP 接口签发/校验相关参数失败，仍按 HTTP 接口状态码规则返回
 
-【预留码段说明】【新增】
+【预留码段说明】
 - 1010-1099：系统级预留（如系统维护、计划任务异常等）
 - 2010-2099：参数验证预留
 - 3010-3099：认证预留（如设备绑定、异地登录等）
@@ -193,7 +193,7 @@ class JobController extends Controller
 - 8010-8099：管理员权限预留
 - 9010-9099：WebSocket预留
 
-【错误码管理规范】【新增】
+【错误码管理规范】
 - 新增错误码需评审维度：区间占用（是否与现有码段冲突）、语义唯一性（是否已有相同语义的错误码）
 - 错误码命名格式：`{错误码}: {简短描述}`，描述应清晰表达错误原因，避免歧义
 - 错误码使用优先级：优先使用已有错误码，其次使用预留码段，最后申请新增码段
@@ -221,12 +221,12 @@ class JobController extends Controller
 3003: 无权限访问
 3004: 账号被封禁
 3005: 账号已注销
-3006: 登录失败次数过多，账号已临时锁定【新增】
-3007: 当前密码错误【新增】
-3008: Token已在黑名单（用户已退出但Token仍被使用）【新增】【P1】
-3009: 新密码与旧密码相同，不允许重复设置【新增】【P2】
+3006: 登录失败次数过多，账号已临时锁定
+3007: 当前密码错误
+3008: Token已在黑名单（用户已退出但Token仍被使用）
+3009: 新密码与旧密码相同，不允许重复设置
 
-【WebSocket错误 9000-9999】【新增】【P0】
+【WebSocket错误 9000-9999】
 9000: WebSocket连接错误
 9001: WebSocket Token无效或过期（鉴权失败）
 9002: WebSocket消息格式错误
@@ -248,15 +248,15 @@ class JobController extends Controller
 4006: 简历未完善
 4007: 未通过认证
 4008: 审核中，请等待
-4009: 重新报名时间限制未到（需等待至can_reapply_time）【新增】
-4010: 职位已过期【新增】
-4011: 职位已暂停【新增】
-4012: 草稿内容不完整，无法发布【新增】
-4013: 不能报名自己发布的职位【新增】
-4014: 会话不存在或已关闭【新增】
-4015: 新手机号已被其他账号注册【新增】【P1】
-4016: 企业名称已被认证占用【新增】【P2】
-4017: 工种不存在或已禁用【新增】【P2】
+4009: 重新报名时间限制未到（需等待至can_reapply_time）
+4010: 职位已过期
+4011: 职位已暂停
+4012: 草稿内容不完整，无法发布
+4013: 不能报名自己发布的职位
+4014: 会话不存在或已关闭
+4015: 新手机号已被其他账号注册
+4016: 企业名称已被认证占用
+4017: 工种不存在或已禁用
 
 【数据验证错误 5000-5999】
 5000: 验证失败
@@ -267,30 +267,30 @@ class JobController extends Controller
 5005: 验证码已过期
 5006: 图片格式错误
 5007: 文件大小超限
-5008: 手机号未注册【新增】
-5009: 邮箱未绑定【新增】
+5008: 手机号未注册
+5009: 邮箱未绑定
 
 【频率限制错误 6000-6999】
 6000: 请求过于频繁
 6001: 超出每日限额
 6002: 超出每小时限额
 6003: IP被限制
-6004: 职位刷新次数超限（达到 system_config.refresh_limit_per_day 每日限额）【新增】
-6005: 公共聊天发言过于频繁【新增】
+6004: 职位刷新次数超限（达到 system_config.refresh_limit_per_day 每日限额）
+6005: 公共聊天发言过于频繁
 
 【内容安全错误 7000-7999】
 7000: 内容包含违禁词
 7001: 内容包含敏感信息
 7002: 内容涉嫌违规
 7003: 图片涉嫌违规
-7004: 联系方式被过滤拦截（消息中含电话/微信被系统过滤）【新增】
+7004: 联系方式被过滤拦截（消息中含电话/微信被系统过滤）
 
-【管理员权限错误 8000-8999】【新增】
+【管理员权限错误 8000-8999】
 8000: 管理员权限不足
 8001: 该操作需要超级管理员权限
 8002: 无该模块操作权限
 8003: 操作已被其他管理员处理
-8004: 管理员账号已被禁用【新增】
+8004: 管理员账号已被禁用
 
 6.3 用户相关接口
 --------------------------------------------------
@@ -304,13 +304,13 @@ class JobController extends Controller
 - 敏感字段处理：手机号、邮箱、身份证、设备信息在 Resource 层统一脱敏；密码修改/重置必须写入审计日志并使旧 token 失效
 - 事务边界建议：注册成功后的"用户创建 + 默认资料初始化 + 登录会话写入"可在事务内完成；邮件通知、欢迎消息、统计写入可异步派发
 - 路由模型绑定建议：设备移除接口可使用 `loginSessions/{loginSession}` 或内部通过当前用户 + device_id 解析，避免越权删除他人设备
-- 登录态管理建议：登录成功后统一写入 `login_sessions`，退出登录/踢出设备/修改密码时统一通过 `DeviceSessionService` 回收会话与 token 黑名单；**设备数量限制**：同一账号最多允许 3 个设备同时登录，超过限制时自动顶替最早且不活跃的会话【新增】【P0】
-- 设备会话建议：为每次登录生成唯一 `device_session_id`，JWT、ws_token、设备管理、自动续期、强制下线均围绕 `device_session_id` 统一建模；服务端校验 JWT 时除验证签名与过期时间外，还需校验 `device_session_id` 是否仍处于有效状态【新增】【P0】
-- 强制失效联动规则：退出登录、退出其他设备、修改密码、注销账号、账号被封禁、管理员强制下线时，必须同时使相关 JWT 失效并加入 Redis 黑名单，且主动断开对应 WebSocket 连接，未使用的 ws_token 也必须立即失效【新增】【P0】
-- 自动续期规则：当响应头返回 `X-New-Token` 时，客户端必须使用新 token 覆盖旧 token；旧 token 仅允许保留 60 秒并发宽限期，宽限期结束后必须失效；若旧 token 已进入黑名单，则不受宽限期保护并立即失效【新增】【P1】
-- ws_token 规则：ws_token 仅用于 WebSocket 握手鉴权，不得作为 HTTP 登录态凭证，也不得脱离对应 `device_session_id` 单独长期代表登录状态【新增】【P0】
+- 登录态管理建议：登录成功后统一写入 `login_sessions`，退出登录/踢出设备/修改密码时统一通过 `DeviceSessionService` 回收会话与 token 黑名单；**设备数量限制**：同一账号最多允许 3 个设备同时登录，超过限制时自动顶替最早且不活跃的会话
+- 设备会话建议：为每次登录生成唯一 `device_session_id`，JWT、ws_token、设备管理、自动续期、强制下线均围绕 `device_session_id` 统一建模；服务端校验 JWT 时除验证签名与过期时间外，还需校验 `device_session_id` 是否仍处于有效状态
+- 强制失效联动规则：退出登录、退出其他设备、修改密码、注销账号、账号被封禁、管理员强制下线时，必须同时使相关 JWT 失效并加入 Redis 黑名单，且主动断开对应 WebSocket 连接，未使用的 ws_token 也必须立即失效
+- 自动续期规则：当响应头返回 `X-New-Token` 时，客户端必须使用新 token 覆盖旧 token；旧 token 仅允许保留 60 秒并发宽限期，宽限期结束后必须失效；若旧 token 已进入黑名单，则不受宽限期保护并立即失效
+- ws_token 规则：ws_token 仅用于 WebSocket 握手鉴权，不得作为 HTTP 登录态凭证，也不得脱离对应 `device_session_id` 单独长期代表登录状态
 
-【6.3.1 获取图形验证码】【新增】
+【6.3.1 获取图形验证码】
 GET /api/user/captcha
 
 请求参数：无（后端基于Session或临时key生成）
@@ -393,7 +393,7 @@ POST /api/user/login
   }
 }
 
-【6.3.4 完善用户信息（引导页）】【新增】
+【6.3.4 完善用户信息（引导页）】
 POST /api/user/complete-profile
 
 请求头：Authorization: Bearer {token}
@@ -431,7 +431,7 @@ POST /api/user/complete-profile
 - 求职者需填写基本信息并选择主要工种（单选）
 - 雇主只需填写昵称和头像，后续需进行企业认证
 - 此接口可复用简历保存接口，但需标记为首次完善，并与 resumes 的 birth_date / education / major_category 字段保持一致
-- 【接口区分】complete-profile用于注册后首次完善（可选字段，引导用户填写）；resume/save用于简历管理页完整编辑（字段校验更严格）【新增】【P1】
+- 【接口区分】complete-profile用于注册后首次完善（可选字段，引导用户填写）；resume/save用于简历管理页完整编辑（字段校验更严格）
 
 【6.3.5 获取用户信息】
 GET /api/user/info
@@ -524,7 +524,7 @@ POST /api/user/delete
   }
 }
 
-【6.3.9 取消注销申请】【新增】
+【6.3.9 取消注销申请】
 POST /api/user/cancel-delete
 
 请求头：Authorization: Bearer {token}
@@ -536,7 +536,7 @@ POST /api/user/cancel-delete
   "data": null
 }
 
-【6.3.10 退出登录】【新增】【P0】
+【6.3.10 退出登录】
 POST /api/user/logout
 
 请求头：Authorization: Bearer {token}
@@ -553,12 +553,12 @@ POST /api/user/logout
 说明：
 - 服务端将当前Token加入Redis黑名单
 - 清除客户端登录状态
-- 必须同时将当前 `device_session_id` 标记为失效，并主动断开该设备对应的 WebSocket 连接【新增】【P0】
-- 该设备对应的未使用 ws_token 必须立即失效，不得继续用于建立新连接【新增】【P0】
+- 必须同时将当前 `device_session_id` 标记为失效，并主动断开该设备对应的 WebSocket 连接
+- 该设备对应的未使用 ws_token 必须立即失效，不得继续用于建立新连接
 - 可选：清除设备关联记录
-- 其他设备保持在线；若需踢出其他设备，应通过设备管理接口单独处理【新增】【P1】
+- 其他设备保持在线；若需踢出其他设备，应通过设备管理接口单独处理
 
-【6.3.11 获取未读消息总数】【新增】【P1】
+【6.3.11 获取未读消息总数】
 GET /api/user/unread-count
 
 请求头：Authorization: Bearer {token}
@@ -577,7 +577,7 @@ GET /api/user/unread-count
 
 说明：用于底部导航消息角标显示
 
-【6.3.12 找回密码申请】【修正】
+【6.3.12 找回密码申请】
 POST /api/user/forgot-password
 
 说明：用户提交找回密码申请，由客服人工处理
@@ -606,7 +606,7 @@ POST /api/user/forgot-password
   "data": null
 }
 
-【6.3.12.1 找回密码（邮箱申请）】【新增】
+【6.3.12.1 找回密码（邮箱申请）】
 POST /api/user/forgot-password-email
 
 说明：已绑定邮箱用户通过邮箱验证码/邮件链接找回密码
@@ -634,7 +634,7 @@ POST /api/user/forgot-password-email
   "data": null
 }
 
-【6.3.12.2 找回密码（邮箱设置新密码）】【新增】
+【6.3.12.2 找回密码（邮箱设置新密码）】
 POST /api/user/reset-password-email
 
 请求参数：
@@ -658,7 +658,7 @@ POST /api/user/reset-password-email
   "data": null
 }
 
-【6.3.13 修改手机号】【新增】
+【6.3.13 修改手机号】
 PUT /api/user/change-phone
 
 请求参数（步骤1）：
@@ -705,7 +705,7 @@ PUT /api/user/change-phone
 - verify_token 一次性使用，修改成功后立即失效
 - 修改手机号成功后，当前Token失效，需使用新手机号重新登录
 
-【6.3.14 获取设备列表】【新增】
+【6.3.14 获取设备列表】
 GET /api/user/devices
 
 请求头：Authorization: Bearer {token}
@@ -737,11 +737,11 @@ GET /api/user/devices
 }
 说明：
 - current_device 由当前请求携带的 token/session_token 对应的 login_sessions 记录动态识别
-- current_device / other_devices 的划分以 `device_session_id` 为准，同一 `device_session_id` 续签产生的新旧 token 视为同一设备会话【新增】【P1】
+- current_device / other_devices 的划分以 `device_session_id` 为准，同一 `device_session_id` 续签产生的新旧 token 视为同一设备会话
 - other_devices 返回同一用户下除当前会话外、未撤销且未过期的其他登录设备
 - **设备数量限制**：同一账号最多允许 **3 个设备**同时登录；超过限制时，最早登录且当前不活跃的设备会话将被自动顶替下线
 
-【6.3.15 移除设备】【新增】
+【6.3.15 移除设备】
 DELETE /api/user/device/{device_id}
 
 请求头：Authorization: Bearer {token}
@@ -755,10 +755,10 @@ DELETE /api/user/device/{device_id}
 说明：
 - 仅允许移除 other_devices，不可移除当前请求对应的 current_device
 - 移除后将对应 login_sessions 记录标记为 is_revoked=1，并使该设备当前 Token 失效
-- 被移除设备对应的 `device_session_id` 必须整体失效；该设备已建立的 WebSocket 连接需被主动断开，未使用的 ws_token 也必须立即作废【新增】【P0】
-- 当前设备保持登录状态，不受影响【新增】【P1】
+- 被移除设备对应的 `device_session_id` 必须整体失效；该设备已建立的 WebSocket 连接需被主动断开，未使用的 ws_token 也必须立即作废
+- 当前设备保持登录状态，不受影响
 
-【6.3.16 退出所有其他设备】【新增】
+【6.3.16 退出所有其他设备】
 POST /api/user/logout-others
 
 请求头：Authorization: Bearer {token}
@@ -774,10 +774,10 @@ POST /api/user/logout-others
 说明：
 - logout_count 表示除当前请求对应会话外，被撤销的其他设备会话数量
 - 当前请求对应设备保持登录状态，其余同用户设备会话统一标记为 is_revoked=1 并使 Token 失效
-- 所有被退出的其他设备，其对应 `device_session_id` 的现存 WebSocket 连接需被主动断开，未使用的 ws_token 必须立即失效【新增】【P0】
-- 当前设备对应 `device_session_id` 不受影响，当前请求使用的 token 可继续使用或按自动续期规则续签【新增】【P1】
+- 所有被退出的其他设备，其对应 `device_session_id` 的现存 WebSocket 连接需被主动断开，未使用的 ws_token 必须立即失效
+- 当前设备对应 `device_session_id` 不受影响，当前请求使用的 token 可继续使用或按自动续期规则续签
 
-【6.3.17 邮件通知设置】【新增】
+【6.3.17 邮件通知设置】
 PUT /api/user/email-notification
 
 请求头：Authorization: Bearer {token}
@@ -808,7 +808,7 @@ PUT /api/user/email-notification
 - 开启邮件通知前必须已绑定邮箱，未绑定邮箱时返回错误码4001
 - 该设置为用户偏好，应在用户表中增加相应字段存储
 
-6.4 企业认证相关接口【新增】
+6.4 企业认证相关接口
 --------------------------------------------------
 
 【Laravel 模块实现建议】
@@ -817,8 +817,8 @@ PUT /api/user/email-notification
 - 推荐 Policy：`CompanyPolicy`（本人查看/修改）、`AdminCompanyPolicy`（审核、查看敏感资质、解密信息）
 - 推荐 Job / Notification：`SyncCompanyAuditTodoJob`、`SendCompanyAuditResultNotification`、`ArchiveSensitiveFileJob`
 - 事务边界建议：企业认证提交、管理员审核（含 users.is_certified 更新、companies 状态更新、通知写入、日志写入）必须放在事务内
-- 【is_certified状态机】状态定义：0未认证/1审核中/2已认证/3认证被拒绝；首次提交认证→is_certified=1；审核通过→is_certified=2；审核拒绝→is_certified=3；重新提交认证→is_certified=1（审核中）【新增】【P0】
-- 敏感字段处理：法人身份证号通过 Service 层 AES-256 加密后写入数据库；资质文件在业务提交阶段统一使用 file_id 引用，落库时内部可解析为 private disk 相对路径，不加密，通过签名 URL 机制控制访问；统一社会信用代码无需加密，但接口输出时可酌情脱敏；不在控制器直接拼接任何敏感字段【更新】【P0】
+- 【is_certified状态机】状态定义：0未认证/1审核中/2已认证/3认证被拒绝；首次提交认证→is_certified=1；审核通过→is_certified=2；审核拒绝→is_certified=3；重新提交认证→is_certified=1（审核中）
+- 敏感字段处理：法人身份证号通过 Service 层 AES-256 加密后写入数据库；资质文件在业务提交阶段统一使用 file_id 引用，落库时内部可解析为 private disk 相对路径，不加密，通过签名 URL 机制控制访问；统一社会信用代码无需加密，但接口输出时可酌情脱敏；不在控制器直接拼接任何敏感字段
 - 路由模型绑定建议：`/api/company/{company}` 适合后台接口；前台"我的企业认证详情"仍可保持 `/api/company/detail`，由当前登录用户反查
 - 审核事件建议：审核通过/拒绝后派发领域事件，统一触发通知、消息中心、后台待办刷新、统计更新
 - 建议补充 Query Scope：`pending()`、`approved()`、`rejected()`，便于后台审核列表复用查询条件
@@ -847,9 +847,9 @@ Content-Type: application/json
 
 Laravel 实现说明：
 - 使用 FormRequest 校验企业类型差异字段
-- Service 层根据 file_id 查询 files 表，校验文件归属当前用户且 type=cert，**直接将 file_id 写入 companies 对应字段**【更新】【P0】
-- 对外接口层统一使用 File Resource 对象返回资质材料【更新】【P0】
-- **资质图片统一以 file_id 存入数据库**，Service 层创建 companies 记录【更新】【P0】
+- Service 层根据 file_id 查询 files 表，校验文件归属当前用户且 type=cert，**直接将 file_id 写入 companies 对应字段**
+- 对外接口层统一使用 File Resource 对象返回资质材料
+- **资质图片统一以 file_id 存入数据库**，Service 层创建 companies 记录
 - Service 层需根据 company_type 写入对应材料字段，并同步将完整材料快照落到 company_audit_histories
 - 提交成功后应派发审核通知/后台待办刷新事件，可异步写入通知与操作日志
 - 涉及同一用户重复提交、企业名称占用、统一社会信用代码重复等情况，优先通过唯一约束 + 业务校验双层保障
@@ -1006,8 +1006,7 @@ POST /api/resume/save
   "data": null
 }
 
-
-【6.5.3 雇主查看求职者简历】【新增】
+【6.5.3 雇主查看求职者简历】
 GET /api/resume/view
 
 请求头：Authorization: Bearer {token}（雇主身份）
@@ -1103,7 +1102,7 @@ GET /api/job/list
         "views_count": 128,
         "created_at": "2024-03-06 08:00:00",
         "refreshed_at": "2024-03-06 10:00:00",
-        "is_favorited": false  // 是否已收藏（登录用户返回，未登录不返回）【新增】【P1】
+        "is_favorited": false  // 是否已收藏（登录用户返回，未登录不返回）
       }
     ],
     "total": 100,
@@ -1117,7 +1116,7 @@ GET /api/job/list
 - 登录用户请求时，返回is_favorited字段标识是否已收藏该职位
 - 未登录用户请求时，不返回is_favorited字段
 
-【6.6.2 热门搜索词】【新增】
+【6.6.2 热门搜索词】
 GET /api/job/hot-words
 
 请求参数：无
@@ -1144,7 +1143,7 @@ GET /api/job/hot-words
 - 首次进入搜索页时调用此接口获取热门词
 - count为近7天搜索次数
 
-【6.6.3 职位搜索】【新增】
+【6.6.3 职位搜索】
 GET /api/job/search
 
 请求参数：
@@ -1268,8 +1267,8 @@ GET /api/job/detail
     "created_at": "2024-03-06 08:00:00",
     "refreshed_at": "2024-03-06 10:00:00",
     "user_application": null,  // 当前用户的报名信息（如果已报名）
-    "is_favorited": false,  // 是否已收藏（登录用户返回）【新增】【P1】
-    "top_application": null  // 置顶申请状态（仅雇主查看自己职位时返回）【新增】【P1】
+    "is_favorited": false,  // 是否已收藏（登录用户返回）
+    "top_application": null  // 置顶申请状态（仅雇主查看自己职位时返回）
   }
 }
 
@@ -1279,7 +1278,7 @@ GET /api/job/detail
 - 雇主查看自己职位时，返回top_application置顶申请状态
 - 浏览记录写入采用异步队列，不影响接口响应速度
 
-【6.6.5 雇主获取自己的职位列表】【新增】【编号修正】
+【6.6.5 雇主获取自己的职位列表】【编号修正】
 GET /api/job/my-list
 
 请求头：Authorization: Bearer {token}（雇主身份）
@@ -1390,7 +1389,7 @@ Laravel 实现说明：
 - 直接发布成功时，服务端应同时写入 `audit_status = 1`，表示该职位视为系统自动审核通过
 - 企业认证未通过时，发布接口应返回业务错误并提示用户先完成认证或继续保存草稿
 
-【6.6.7 保存草稿】【新增】【编号修正】
+【6.6.7 保存草稿】【编号修正】
 POST /api/job/save-draft
 
 请求头：Authorization: Bearer {token}
@@ -1461,8 +1460,7 @@ DELETE /api/job/delete
   "data": null
 }
 
-
-【6.6.11 切换职位状态（暂停/继续）】【新增】【编号修正】
+【6.6.11 切换职位状态（暂停/继续）】【编号修正】
 PUT /api/job/toggle-status
 
 请求头：Authorization: Bearer {token}
@@ -1482,7 +1480,7 @@ PUT /api/job/toggle-status
   }
 }
 
-【6.6.12 复制职位】【新增】【编号修正】
+【6.6.12 复制职位】【编号修正】
 POST /api/job/copy
 
 请求头：Authorization: Bearer {token}
@@ -1502,7 +1500,7 @@ POST /api/job/copy
   }
 }
 
-【6.6.13 申请置顶】【新增】【编号修正】
+【6.6.13 申请置顶】【编号修正】
 POST /api/job/apply-top
 
 请求头：Authorization: Bearer {token}
@@ -1510,7 +1508,7 @@ POST /api/job/apply-top
 请求参数：
 {
   "job_id": 1,  // 职位ID（必填）
-  "apply_days": 7  // 申请置顶天数（可选，默认7天，与表设计一致）【修正】【P1】
+  "apply_days": 7  // 申请置顶天数（可选，默认7天，与表设计一致）
 }
 
 成功响应：
@@ -1536,7 +1534,7 @@ status状态说明：
 - 管理员审核通过后，职位才会正式置顶
 - 管理员可直接设置置顶，但系统会先检查是否有待审核的用户申请，如有则提示管理员去审核
 
-【6.6.13.1 查询置顶申请状态】【新增】【P1】【编号修正】
+【6.6.13.1 查询置顶申请状态】【编号修正】
 GET /api/job/top-application-status
 
 请求头：Authorization: Bearer {token}
@@ -1584,7 +1582,7 @@ GET /api/job/top-application-status
 - 评论内容应复用违禁词/联系方式过滤规则，并通过统一内容安全服务拦截；被举报评论可异步派发审核任务
 - 职位统计接口建议由 `JobStatisticsService` 汇总，复杂聚合查询与图表数据整形不要放在控制器中
 
-【6.6.14 职位数据统计（雇主端）】【新增】【编号修正】
+【6.6.14 职位数据统计（雇主端）】【编号修正】
 GET /api/job/statistics
 
 请求头：Authorization: Bearer {token}
@@ -1620,13 +1618,13 @@ GET /api/job/statistics
   }
 }
 
-说明：【新增】
+说明：
 - 浏览量统计基于 job_views 表，按日聚合
 - views_total 为统计周期内累计浏览次数，非实时在线人数
 - daily_views 数组按日期倒序排列
 - 统计接口每小时刷新一次聚合数据
 
-【6.6.15 雇主整体数据统计】【新增】【编号修正】
+【6.6.15 雇主整体数据统计】【编号修正】
 GET /api/employer/statistics
 
 请求头：Authorization: Bearer {token}
@@ -1671,7 +1669,7 @@ GET /api/employer/statistics
   }
 }
 
-6.7 评论相关接口【新增】
+6.7 评论相关接口
 --------------------------------------------------
 
 【6.7.1 获取职位评论列表】
@@ -1846,7 +1844,7 @@ POST /api/application/apply
   "category_id": 1,      // 工种ID（必填）
   "level": "medium",     // 级别：senior/medium/junior（必填）
   "message": "有电工证，经验丰富",  // 留言（可选）
-  "client_apply_id": "uuid-xxx-xxx"  // 客户端幂等键（必填，用于防止重复报名）【新增】
+  "client_apply_id": "uuid-xxx-xxx"  // 客户端幂等键（必填，用于防止重复报名）
 }
 
 成功响应：
@@ -2009,7 +2007,6 @@ PUT /api/application/batch-review
   }
 }
 
-
 6.9 消息相关接口
 --------------------------------------------------
 
@@ -2030,9 +2027,9 @@ PUT /api/application/batch-review
 - 会话列表、未读数、最后消息摘要建议由 `ConversationService` 统一维护，并通过 Query Object / Scope 复用查询
 - WebSocket 握手成功后，连接与用户绑定、会话订阅、在线状态广播应封装到独立网关服务，不直接写在控制器或单个事件处理器中
 - 消息入库后建议派发领域事件，再由 Listener / Job 负责推送、通知中心写入、未读数增减、敏感词审计日志
-- 文件/图片消息建议复用统一上传服务，消息发送阶段只提交 file_id；消息表保存 file_id 或受控的结构化文件元数据引用，消息输出统一转换为 File Resource 对象，不直接持久化完整 URL【更新】【P0】
+- 文件/图片消息建议复用统一上传服务，消息发送阶段只提交 file_id；消息表保存 file_id 或受控的结构化文件元数据引用，消息输出统一转换为 File Resource 对象，不直接持久化完整 URL
 
-【6.9.1 WebSocket连接配置】【新增】【P0】
+【6.9.1 WebSocket连接配置】
 GET /api/ws/config
 
 请求头：Authorization: Bearer {token}
@@ -2059,9 +2056,9 @@ GET /api/ws/config
 
 说明：
 - ws_token 用于 WebSocket 连接鉴权，有效期较短（建议5分钟），过期后需重新调用本接口获取新 ws_token
-- ws_token 必须绑定到当前登录态对应的 `device_session_id`，仅作为握手凭证使用，不能替代 HTTP Bearer Token，也不能脱离 `device_session_id` 单独长期代表登录状态【新增】【P0】
-- 已过期、已失效、已被加入黑名单的登录 token 不允许继续换取新的 ws_token；若账号已注销、被封禁、被管理员强制下线，或对应 `device_session_id` 已失效，本接口必须返回认证失败【新增】【P0】
-- 当用户退出登录、退出其他设备、修改密码、注销账号、账号被封禁、管理员强制下线时，相关 `device_session_id` 下已建立的 WebSocket 连接必须被主动断开，尚未使用的 ws_token 也必须立即失效【新增】【P0】
+- ws_token 必须绑定到当前登录态对应的 `device_session_id`，仅作为握手凭证使用，不能替代 HTTP Bearer Token，也不能脱离 `device_session_id` 单独长期代表登录状态
+- 已过期、已失效、已被加入黑名单的登录 token 不允许继续换取新的 ws_token；若账号已注销、被封禁、被管理员强制下线，或对应 `device_session_id` 已失效，本接口必须返回认证失败
+- 当用户退出登录、退出其他设备、修改密码、注销账号、账号被封禁、管理员强制下线时，相关 `device_session_id` 下已建立的 WebSocket 连接必须被主动断开，尚未使用的 ws_token 也必须立即失效
 - 连接时必须使用 URL 参数方式携带 `ws_token`：
   * HTTP环境：ws://m.mokag.top/ws?ws_token=ws_token_xxx
   * HTTPS环境：wss://m.mokag.top/ws?ws_token=ws_token_xxx
@@ -2070,7 +2067,7 @@ GET /api/ws/config
 - 鉴权失败时服务端立即断开连接，返回 WebSocket 错误码 9001
 - 此接口为 WebSocket 连接的前置步骤，必须先调用获取 ws_token 后才能建立 WebSocket 连接
 
-【6.9.2 获取公共聊天室在线人数】【新增】
+【6.9.2 获取公共聊天室在线人数】
 GET /api/chat/online-count
 
 请求参数：无
@@ -2194,7 +2191,7 @@ POST /api/message/send-private
   }
 }
 
-【6.9.6 标记私聊消息已读】【新增】【P0】
+【6.9.6 标记私聊消息已读】
 PUT /api/message/read
 
 请求头：Authorization: Bearer {token}
@@ -2219,8 +2216,8 @@ PUT /api/message/read
 - 用户进入私聊界面时调用此接口标记当前会话消息已读
 - 此接口仅用于单个 conversation_key 对应会话的已读同步
 - 若传 message_ids 则只标记当前会话内指定消息，否则标记该会话全部消息
-- 【空数组行为】空数组[]与不传message_ids参数等价，均表示标记该会话全部消息已读【新增】
-- 【不存在消息ID处理】若message_ids中包含不存在或已删除的消息ID，服务端忽略这些ID，仅处理存在的消息ID【新增】
+- 【空数组行为】空数组[]与不传message_ids参数等价，均表示标记该会话全部消息已读
+- 【不存在消息ID处理】若message_ids中包含不存在或已删除的消息ID，服务端忽略这些ID，仅处理存在的消息ID
 - 服务端更新 messages_private 表的 is_read 字段
 - 同时更新 conversations 表的 unread 计数
 - 通过 WebSocket 推送已读回执给消息发送方
@@ -2336,8 +2333,7 @@ PUT /api/notifications/read
 - 传 `all=true` 表示将当前用户全部未读通知标记为已读
 ⚠️ 参数互斥：ids和all不能同时传递，只能选择其中一种方式
 
-
-【6.9.11 撤回私聊消息】【新增】
+【6.9.11 撤回私聊消息】
 POST /api/message/private/recall
 
 请求头：Authorization: Bearer {token}
@@ -2367,8 +2363,7 @@ POST /api/message/private/recall
 - 撤回后设置 is_recalled=1 并推送 message.recalled 事件
 - 撤回后双方都看到"[消息已撤回]"，内容不可见
 
-
-【6.9.12 删除私聊消息】【新增】
+【6.9.12 删除私聊消息】
 DELETE /api/message/private/delete
 
 请求头：Authorization: Bearer {token}
@@ -2494,7 +2489,7 @@ GET /api/favorite/list
 
 说明：
 - `status=active` 表示仅返回仍处于招聘中的收藏职位
-- 此处 `status=closed` 为收藏页前端筛选分组口径，表示返回非 active 职位集合（含 paused、closed、expired、deleted 等），并非数据库真实状态值仅等于 `closed`；如需按数据库真实状态精确筛选，应传具体状态枚举【更新】【P0】
+- 此处 `status=closed` 为收藏页前端筛选分组口径，表示返回非 active 职位集合（含 paused、closed、expired、deleted 等），并非数据库真实状态值仅等于 `closed`；如需按数据库真实状态精确筛选，应传具体状态枚举
 - `total_pages` 表示总页数，与其他列表接口保持一致；前端可通过 page < total_pages 判断是否还有更多数据
 - `stats` 用于收藏页顶部状态筛选统计展示
 
@@ -2605,24 +2600,24 @@ POST /api/upload/image
   }
 }
 
-说明：上传接口返回结构即标准 File Resource 对象；若上传结果为 private 文件，则 `url` 返回 null，改为返回 `temporary_url`。前端应直接消费该对象，不得自行拼接访问地址。【新增】【P0】
+说明：上传接口返回结构即标准 File Resource 对象；若上传结果为 private 文件，则 `url` 返回 null，改为返回 `temporary_url`。前端应直接消费该对象，不得自行拼接访问地址。
 
 统一文件引用规范（重要）：
-- 业务表（jobs.images、users.avatar_file_id、companies.business_license_file_id 等）默认统一存储 file_id，不存储完整 URL；历史字段若暂存相对 path，仅允许作为内部过渡字段使用【更新】【P0】
+- 业务表（jobs.images、users.avatar_file_id、companies.business_license_file_id 等）默认统一存储 file_id，不存储完整 URL；历史字段若暂存相对 path，仅允许作为内部过渡字段使用
 - 原因：完整 URL 包含域名/CDN前缀，域名变更、CDN切换、私有存储迁移时会批量失效
-- 展示层由服务端统一将 file_id / path 转换为 File Resource 对象（Resource 层或 Presenter 层处理），前端不得自行拼接路径【新增】【P0】
-- File Resource 对象字段统一为：file_id、disk、path、access、url、temporary_url、mime_type、size、original_name【新增】【P0】
+- 展示层由服务端统一将 file_id / path 转换为 File Resource 对象（Resource 层或 Presenter 层处理），前端不得自行拼接路径
+- File Resource 对象字段统一为：file_id、disk、path、access、url、temporary_url、mime_type、size、original_name
 - 私有文件（资质证件等）：disk=private，access=private，返回 `temporary_url`，有效期建议15分钟
 - 公开文件（职位图片、头像等）：disk=public，access=public，返回 `url`，可直接访问或走 CDN
-- private 文件的 `url` 应返回 null；public 文件的 `temporary_url` 默认返回 null，除非业务明确要求临时签名公开链路【新增】【P1】
+- private 文件的 `url` 应返回 null；public 文件的 `temporary_url` 默认返回 null，除非业务明确要求临时签名公开链路
 
 Laravel 实现建议：
 - 上传后在 files 表记录文件元数据（file_id、path、disk、mime_type、size、uploader_id、type、created_at）
 - 业务接口提交时只传 file_id，由 Service 层校验 file_id 归属与合法性
 - 资源输出使用 Storage::url($path) 或 Storage::temporaryUrl($path, $expiry) 统一生成访问链接
-- 文件相关 Resource 建议封装统一 `FileResource` / `FileResourceCollection`，避免头像、资质材料、简历附件、消息图片在多个接口中重复定义返回结构【新增】【P1】
-- 职位图片、头像、简历附件、企业资质、消息文件等场景均遵循同一文件模型：业务层传 file_id，输出层返 File Resource 对象【新增】【P0】
-- 对外返回命名统一使用 `*_file` / `*_files` 表达文件语义字段，如 `avatar_file`、`cover_image_file`、`site_logo_file`；页面跳转链接、下载链接等纯链接字段继续使用 string，如 `link_url`、`android_download_url`、`ios_download_url`【新增】【P0】
+- 文件相关 Resource 建议封装统一 `FileResource` / `FileResourceCollection`，避免头像、资质材料、简历附件、消息图片在多个接口中重复定义返回结构
+- 职位图片、头像、简历附件、企业资质、消息文件等场景均遵循同一文件模型：业务层传 file_id，输出层返 File Resource 对象
+- 对外返回命名统一使用 `*_file` / `*_files` 表达文件语义字段，如 `avatar_file`、`cover_image_file`、`site_logo_file`；页面跳转链接、下载链接等纯链接字段继续使用 string，如 `link_url`、`android_download_url`、`ios_download_url`
 
 【6.10.9 黑名单公示】
 GET /api/blacklist/public
@@ -2665,9 +2660,9 @@ GET /api/blacklist/public
 说明：
 - 用户端黑名单公示统一展示 `public_reason`，不直接返回后台内部处理字段 `reason`
 - 页面仅支持类型筛选（all/company/labor/user）与关键词搜索，不提供统计卡片和额外违规类型筛选
-- **申诉说明**：被公示的企业/中介/用户可通过平台客服渠道提交申诉，管理员审核后决定是否撤销公示。【新增】
+- **申诉说明**：被公示的企业/中介/用户可通过平台客服渠道提交申诉，管理员审核后决定是否撤销公示。
 
-【6.10.10 检查黑名单状态】【新增】
+【6.10.10 检查黑名单状态】
 GET /api/blacklist/check
 
 请求参数：
@@ -2684,7 +2679,7 @@ GET /api/blacklist/check
   }
 }
 
-【6.10.11 浏览历史列表】【新增】
+【6.10.11 浏览历史列表】
 GET /api/user/browse-history
 
 请求头：Authorization: Bearer {token}
@@ -2714,7 +2709,7 @@ GET /api/user/browse-history
   }
 }
 
-【6.10.12 清空浏览历史】【新增】
+【6.10.12 清空浏览历史】
 DELETE /api/user/browse-history/clear
 
 请求头：Authorization: Bearer {token}
@@ -2726,7 +2721,7 @@ DELETE /api/user/browse-history/clear
   "data": null
 }
 
-【6.10.13 获取系统配置】【新增】【P1】
+【6.10.13 获取系统配置】
 GET /api/system/config
 
 请求参数：无（公开接口，无需登录）
@@ -2782,7 +2777,7 @@ Laravel 实现说明：
 - 建议在应用启动时调用获取配置
 - 配置项根据实际需求返回，可能动态调整
 
-【6.10.14 获取帮助中心首页数据】【新增】【P1】
+【6.10.14 获取帮助中心首页数据】
 GET /api/help/home
 
 说明：用于帮助中心首页加载分类导航、热门问题与推荐文章。
@@ -2800,7 +2795,7 @@ GET /api/help/home
   }
 }
 
-【6.10.15 帮助分类列表】【新增】【P1】
+【6.10.15 帮助分类列表】
 GET /api/help/categories
 
 请求参数：无
@@ -2814,7 +2809,7 @@ GET /api/help/categories
   ]
 }
 
-【6.10.16 帮助文章列表】【新增】【P1】
+【6.10.16 帮助文章列表】
 GET /api/help/articles
 
 请求参数：
@@ -2835,7 +2830,7 @@ GET /api/help/articles
   }
 }
 
-【6.10.17 帮助文章详情】【新增】【P1】
+【6.10.17 帮助文章详情】
 GET /api/help/articles/{id}
 
 请求参数：
@@ -2857,7 +2852,7 @@ GET /api/help/articles/{id}
   }
 }
 
-【6.10.18 帮助中心搜索】【新增】【P1】
+【6.10.18 帮助中心搜索】
 GET /api/help/search
 
 请求参数：
@@ -2882,7 +2877,7 @@ Laravel 实现说明：
   }
 }
 
-【6.10.19 热门问题列表】【新增】【P1】
+【6.10.19 热门问题列表】
 GET /api/help/hot
 
 请求参数：
@@ -2897,7 +2892,7 @@ GET /api/help/hot
   }
 }
 
-【6.10.20 提交帮助文章反馈】【新增】【P1】
+【6.10.20 提交帮助文章反馈】
 POST /api/help/articles/{id}/feedback
 
 请求头：Authorization: Bearer {token}
@@ -2915,13 +2910,13 @@ POST /api/help/articles/{id}/feedback
   "data": null
 }
 
-6.11 管理员后台接口【新增】
+6.11 管理员后台接口
 --------------------------------------------------
 
 【Laravel 模块实现建议】
 - 推荐 FormRequest：`AdminLoginRequest`、`BlacklistUserRequest`、`AuditCompanyRequest`、`HandleReportRequest`、`UpdateSystemConfigRequest`、`CreateAnnouncementRequest`、`SendBroadcastRequest`
 - 推荐 Service / Action：`AdminAuthService`、`BlacklistService`、`ReportHandleService`、`AnnouncementService`、`BroadcastService`、`SystemConfigService`、`SubAdminPermissionService`
-- 推荐 Gate / 中间件：`auth.jwt:admin`、`*:manage`、`*:view`、`*:audit`、`super-admin-only`、`operation.lock`（防并发处理）【更新】【P1】
+- 推荐 Gate / 中间件：`auth.jwt:admin`、`*:manage`、`*:view`、`*:audit`、`super-admin-only`、`operation.lock`（防并发处理）
 - 推荐审计能力：所有写操作通过统一 `OperationLogService` 记录请求人、目标资源、前后变更摘要、IP、设备、请求ID
 - 事务边界建议：审核、拉黑、解封、删除、权限变更、配置发布等接口应以事务保证"主业务更新 + 审计日志 + 通知/待办刷新"一致
 - 可异步化任务：批量导出、系统广播下发、统计报表刷新、敏感内容复检、黑名单公示缓存刷新
@@ -2934,7 +2929,7 @@ POST /api/help/articles/{id}/feedback
 
 Laravel 实现说明：
 - 管理端建议独立 `auth.jwt:admin` 中间件或独立 guard，避免与普通用户 token 混用
-- 模块级权限使用 Policy / Gate / 自定义权限中间件组合实现，格式与 permission_code 一致，例如 `job:audit`、`user:view`、`help:article:manage`、`help:stats:view`【更新】【P1】
+- 模块级权限使用 Policy / Gate / 自定义权限中间件组合实现，格式与 permission_code 一致，例如 `job:audit`、`user:view`、`help:article:manage`、`help:stats:view`
 - 涉及查看敏感资质、解密身份证、拉黑/解封、删除内容、审核企业等操作时，除接口权限外还应追加资源级授权校验与审计日志
 
 【管理员子模块补充实现建议】
